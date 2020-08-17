@@ -1,9 +1,7 @@
 import React, { useContext, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
-const Navbar = ({ title, icon }) => {
+const Navbar = () => {
   const authContext = useContext(AuthContext);
 
   const { logout, isAuthenticated, user } = authContext;
@@ -12,52 +10,33 @@ const Navbar = ({ title, icon }) => {
     logout();
   };
 
-  const authLinks = (
-    <Fragment>
-      <li>Hello {user && user.name}</li>
-      <li>
-        <Link to='/about'>About</Link>
-      </li>
-      <li>
-        <a onClick={onLogout} href='#!'>
-          <i className='fas fa-sign-out-alt'></i>
-          <span className='hide-sm'>Logout</span>
-        </a>
-      </li>
-    </Fragment>
-  );
-
-  const guestLinks = (
-    <Fragment>
-      <li>
-        <Link to='/register'>Register</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-    </Fragment>
-  );
-
   return (
-    <div className='navbar bg-primary'>
-      <h1>
-        <Link to='/'>
-          <i className={icon} /> {title}{' '}
-        </Link>
-      </h1>
-      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
-    </div>
+    <nav className='blue'>
+      <div className='nav-wrapper'>
+        <a href='#!' className='brand-logo' style={{ marginLeft: '10px' }}>
+          <i className='material-icons'>cake</i>CookBook
+        </a>
+        {isAuthenticated && (
+          <Fragment>
+            <ul id='nav-mobile' className='right'>
+              <li>
+                <a href='#!' onClick={onLogout} title='Logout'>
+                  <i className='material-icons'>logout</i>
+                </a>
+              </li>
+            </ul>
+            <ul id='nav-mobile' className='right hide-on-med-and-down'>
+              <li>
+                <i style={{ fontSize: '10pt' }}>
+                  Hi {user && user.name.split(' ')[0]}, ready to cook?
+                </i>
+              </li>
+            </ul>
+          </Fragment>
+        )}
+      </div>
+    </nav>
   );
 };
 
 export default Navbar;
-
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string,
-};
-
-Navbar.defaultProps = {
-  title: 'CookBook',
-  icon: 'fas fa-id-card-alt',
-};

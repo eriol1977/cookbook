@@ -46,59 +46,99 @@ const Register = (props) => {
   };
 
   return (
-    <div className='form-container'>
-      <h1>
-        Account <span className='text-primary'>Register</span>
-      </h1>
-      <form onSubmit={onSubmit}>
-        <div className='form-group'>
-          <label htmlFor='name'>Name</label>
-          <input
-            type='text'
-            name='name'
-            value={name}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='email'>Email Address</label>
-          <input
-            type='email'
-            name='email'
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
-            minLength='8'
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password2'>Confirm Password</label>
-          <input
-            type='password'
-            name='password2'
-            value={password2}
-            onChange={onChange}
-            required
-            minLength='8'
-          />
-        </div>
-        <input
-          type='submit'
-          value='Register'
-          className='btn btn-primary btn-block'
-        />
-      </form>
+    <div className='section'>
+      <main>
+        <center>
+          <h5 className='blue-text'>Please, create a new account</h5>
+          <div className='section'></div>
+
+          <div className='container'>
+            <div
+              className='z-depth-1 grey lighten-4 row'
+              style={{
+                display: 'inline-block',
+                padding: '32px 48px 0px 48px',
+                border: '1px solid #EEE',
+              }}
+            >
+              <form onSubmit={onSubmit}>
+                <div className='row'>
+                  <div className='col s12'></div>
+                </div>
+
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <label htmlFor='name'>Name</label>
+                    <input
+                      type='text'
+                      name='name'
+                      value={name}
+                      onChange={onChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <label htmlFor='email'>Email Address</label>
+                    <input
+                      type='email'
+                      name='email'
+                      value={email}
+                      onChange={onChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <label htmlFor='password'>Password</label>
+                    <input
+                      type='password'
+                      name='password'
+                      value={password}
+                      onChange={onChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='row'>
+                  <div className='input-field col s12'>
+                    <label htmlFor='password2'>Confirm Password</label>
+                    <input
+                      type='password'
+                      name='password2'
+                      value={password2}
+                      onChange={onChange}
+                      required
+                      minLength='8'
+                    />
+                  </div>
+                </div>
+
+                <br />
+                <center>
+                  <div className='row'>
+                    <button
+                      type='submit'
+                      name='btn_register'
+                      className='col s12 btn btn-large waves-effect blue'
+                    >
+                      Register
+                    </button>
+                  </div>
+                </center>
+              </form>
+            </div>
+          </div>
+        </center>
+
+        <div className='section'></div>
+        <div className='section'></div>
+      </main>
     </div>
   );
 };
