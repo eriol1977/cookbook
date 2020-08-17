@@ -58,6 +58,6 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'App Title',
+  title: 'CookBook',
   icon: 'fas fa-id-card-alt',
 };

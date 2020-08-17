@@ -1,7 +1,7 @@
 {
-  "name": "basic-mongodb-jwt-auth",
+  "name": "cookbook",
   "version": "1.0.0",
-  "description": "Basic NodeJs backend with MongoDb and JWT user authentication",
+  "description": "Simple kitchen recipes keeper app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
