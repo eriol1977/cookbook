@@ -14,7 +14,7 @@ app.use(express.json({ extended: false })); // to access body data (not necessar
 // define routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/test', require('./routes/test')); // sample CRUD routes
+app.use('/api/recipes', require('./routes/recipes'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
