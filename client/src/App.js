@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
@@ -20,11 +19,6 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  useEffect(() => {
-    // Init Materialize javascript (modals, etc: it's like calling init for every kind of component, but without options)
-    M.AutoInit();
-  });
-
   return (
     <AuthState>
       <RecipeState>

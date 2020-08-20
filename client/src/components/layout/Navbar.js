@@ -11,31 +11,67 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='blue'>
-      <div className='nav-wrapper'>
-        <a href='#!' className='brand-logo' style={{ marginLeft: '10px' }}>
-          <i className='material-icons'>cake</i>CookBook
-        </a>
-        {isAuthenticated && (
+    <Fragment>
+      <nav className='blue'>
+        <div className='nav-wrapper'>
+          {isAuthenticated ? (
+            <a
+              href='#!'
+              className='brand-logo sidenav-trigger show-on-large'
+              style={{ marginLeft: '10px' }}
+              data-target='slide-out'
+            >
+              <i className='material-icons'>menu</i>CookBook
+            </a>
+          ) : (
+            <a href='#!' className='brand-logo' style={{ marginLeft: '10px' }}>
+              CookBook
+            </a>
+          )}
+
+          {isAuthenticated && (
+            <Fragment>
+              <ul
+                id='nav-mobile'
+                className='right hide-on-med-and-down'
+                style={{ marginRight: '10px' }}
+              >
+                <li>
+                  <i style={{ fontSize: '10pt' }}>
+                    Hi {user && user.name.split(' ')[0]}, ready to cook?
+                  </i>
+                </li>
+              </ul>
+            </Fragment>
+          )}
+        </div>
+      </nav>
+      <ul id='slide-out' className='sidenav'>
+        {user && (
           <Fragment>
-            <ul id='nav-mobile' className='right'>
-              <li>
-                <a href='#!' onClick={onLogout} title='Logout'>
-                  <i className='material-icons'>logout</i>
-                </a>
-              </li>
-            </ul>
-            <ul id='nav-mobile' className='right hide-on-med-and-down'>
-              <li>
-                <i style={{ fontSize: '10pt' }}>
-                  Hi {user && user.name.split(' ')[0]}, ready to cook?
-                </i>
-              </li>
-            </ul>
+            <li>
+              <a href='#!'>
+                <i className='material-icons'>user</i>
+                {user.name}
+              </a>
+            </li>
+            <li>
+              <div className='divider'></div>
+            </li>
+            <li>
+              <a
+                href='#!'
+                onClick={onLogout}
+                title='Logout'
+                className='sidenav-close'
+              >
+                <i className='material-icons'>logout</i>Logout
+              </a>
+            </li>
           </Fragment>
         )}
-      </div>
-    </nav>
+      </ul>
+    </Fragment>
   );
 };
 
