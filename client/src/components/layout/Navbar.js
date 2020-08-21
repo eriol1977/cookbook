@@ -1,13 +1,17 @@
 import React, { useContext, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
+import RecipeContext from '../../context/recipe/recipeContext';
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
+  const recipeContext = useContext(RecipeContext);
 
   const { logout, isAuthenticated, user } = authContext;
+  const { clearRecipes } = recipeContext;
 
   const onLogout = () => {
     logout();
+    clearRecipes(); // without this, the next user would see the previous user's recipes!
   };
 
   return (

@@ -5,6 +5,7 @@ import {
   GET_RECIPES,
   SEARCH_RECIPES,
   CLEAR_SEARCH,
+  CLEAR_RECIPES,
 } from '../types';
 
 export default (state, action) => {
@@ -45,6 +46,14 @@ export default (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case CLEAR_RECIPES:
+      return {
+        ...state,
+        recipes: null,
+        filtered: null,
+        error: null,
+        current: null,
       };
     default:
       return state;

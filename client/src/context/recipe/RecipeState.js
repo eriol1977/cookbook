@@ -10,6 +10,7 @@ import {
   GET_RECIPES,
   SEARCH_RECIPES,
   CLEAR_SEARCH,
+  CLEAR_RECIPES,
 } from '../types';
 
 const RecipeState = (props) => {
@@ -63,6 +64,11 @@ const RecipeState = (props) => {
     dispatch({ type: CLEAR_SEARCH });
   };
 
+  // Clear Recipes
+  const clearRecipes = () => {
+    dispatch({ type: CLEAR_RECIPES });
+  };
+
   // Set loading to true
   const setLoading = () => {
     dispatch({ type: SET_LOADING });
@@ -81,6 +87,7 @@ const RecipeState = (props) => {
         searchRecipes,
         clearSearch,
         setLoading,
+        clearRecipes,
       }}
     >
       {props.children}
