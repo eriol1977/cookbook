@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import RecipeContext from '../../context/recipe/recipeContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddRecipeModal = (props) => {
+const AddRecipeModal = () => {
   const recipeContext = useContext(RecipeContext);
   const { addRecipe } = recipeContext;
 
@@ -89,7 +88,5 @@ const AddRecipeModal = (props) => {
     </div>
   );
 };
-
-AddRecipeModal.propTypes = {};
 
 export default AddRecipeModal;

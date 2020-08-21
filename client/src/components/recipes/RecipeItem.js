@@ -1,23 +1,29 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import RecipeContext from '../../context/recipe/recipeContext';
 
 const RecipeItem = ({ recipe }) => {
-  const recipeContext = useContext(RecipeContext);
-  const { _id, title, ingredients, preparation } = recipe;
+  const { title } = recipe;
 
   return (
     <div className='col s12 m4 l4'>
-      <h5>{title}</h5>
-      <span>
-        <strong>Ingredients:</strong>
-      </span>
-      <p>{ingredients}</p>
-      <span>
-        <strong>Preparation:</strong>
-      </span>
-      <p>{preparation}</p>
-      <hr />
+      <div className='card small'>
+        <div className='card-image'>
+          <img src='cookbook.gif' alt='Recipe' />
+        </div>
+        {/* the following div, together with some rules in App.css, solves the problem of the halfway button being hidden in a card
+        see: https://github.com/Dogfalo/materialize/issues/4218 */}
+        <div className='card-fab'>
+          <a
+            href='#!'
+            className='btn-floating halfway-fab waves-effect waves-light blue'
+          >
+            <i className='material-icons'>edit</i>
+          </a>
+        </div>
+        <div className='card-content'>
+          <span className='card-title'>{title}</span>
+        </div>
+      </div>
     </div>
   );
 };
