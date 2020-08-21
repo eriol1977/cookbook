@@ -4,17 +4,10 @@ import RecipeContext from '../../context/recipe/recipeContext';
 
 const RecipeItem = ({ recipe }) => {
   const recipeContext = useContext(RecipeContext);
-  //const { deleteContact, setCurrent, clearCurrent } = contactContext;
-
   const { _id, title, ingredients, preparation } = recipe;
 
-  //   const onDelete = () => {
-  //     deleteContact(_id);
-  //     clearCurrent();
-  //   };
-
   return (
-    <div>
+    <div className='col s12 m4 l4'>
       <h5>{title}</h5>
       <span>
         <strong>Ingredients:</strong>

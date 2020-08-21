@@ -13,20 +13,40 @@ const Recipes = () => {
     //eslint-disable-next-line
   }, []);
 
+  // Splits the given array in groups of three elements
+  const splitArrayInGroupsOfThree = (original) => {
+    const copy = Array.from(original);
+    var groups = [];
+    while (copy.length > 0) groups.push(copy.splice(0, 3));
+    return groups;
+  };
+
   if (recipes !== null && recipes.length === 0 && !loading) {
     return <h5>Please add a recipe</h5>;
   }
 
+  // the recipes (all of them, or just those filtered by the search bar)
+  // are split in groups of three, then a row is created for each group;
+  // each RecipeItem is a div with class col s12 m6 l4, so that an entire row
+  // is displayed on a large or medium screen, otherwise only one element.
   return (
     <Fragment>
       {recipes !== null && !loading ? (
         <Fragment>
           {filtered !== null
-            ? filtered.map((recipe) => (
-                <RecipeItem recipe={recipe} key={recipe._id} />
+            ? splitArrayInGroupsOfThree(filtered).map((group, index) => (
+                <div className='row' key={index}>
+                  {group.map((recipe) => (
+                    <RecipeItem recipe={recipe} key={recipe._id} />
+                  ))}
+                </div>
               ))
-            : recipes.map((recipe) => (
-                <RecipeItem recipe={recipe} key={recipe._id} />
+            : splitArrayInGroupsOfThree(recipes).map((group, index) => (
+                <div className='row' key={index}>
+                  {group.map((recipe) => (
+                    <RecipeItem recipe={recipe} key={recipe._id} />
+                  ))}
+                </div>
               ))}
         </Fragment>
       ) : (
