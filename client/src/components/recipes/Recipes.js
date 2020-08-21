@@ -6,7 +6,7 @@ import Spinner from '../layout/Spinner';
 const Recipes = () => {
   const recipeContext = useContext(RecipeContext);
 
-  const { recipes, getRecipes, loading } = recipeContext;
+  const { recipes, getRecipes, loading, filtered } = recipeContext;
 
   useEffect(() => {
     getRecipes();
@@ -20,7 +20,15 @@ const Recipes = () => {
   return (
     <Fragment>
       {recipes !== null && !loading ? (
-        recipes.map((recipe) => <RecipeItem recipe={recipe} key={recipe._id} />)
+        <Fragment>
+          {filtered !== null
+            ? filtered.map((recipe) => (
+                <RecipeItem recipe={recipe} key={recipe._id} />
+              ))
+            : recipes.map((recipe) => (
+                <RecipeItem recipe={recipe} key={recipe._id} />
+              ))}
+        </Fragment>
       ) : (
         <Spinner />
       )}

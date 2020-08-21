@@ -14,4 +14,6 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const GET_RECIPES = 'GET_RECIPES';
 export const ADD_RECIPE = 'ADD_RECIPE';
 export const RECIPES_ERROR = 'RECIPES_ERROR';
+export const SEARCH_RECIPES = 'SEARCH_RECIPES';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 export const SET_LOADING = 'SET_LOADING';

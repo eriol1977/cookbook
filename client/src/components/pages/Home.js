@@ -4,6 +4,7 @@ import AddBtn from '../layout/AddBtn';
 import AddRecipeModal from '../recipes/AddRecipeModal';
 import Recipes from '../recipes/Recipes';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import SearchBar from '../layout/SearchBar';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
@@ -26,6 +27,7 @@ const Home = () => {
     <div className='container'>
       <AddBtn />
       <AddRecipeModal />
+      <SearchBar />
       <Recipes />
     </div>
   );

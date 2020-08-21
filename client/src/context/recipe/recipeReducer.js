@@ -1,4 +1,11 @@
-import { ADD_RECIPE, RECIPES_ERROR, SET_LOADING, GET_RECIPES } from '../types';
+import {
+  ADD_RECIPE,
+  RECIPES_ERROR,
+  SET_LOADING,
+  GET_RECIPES,
+  SEARCH_RECIPES,
+  CLEAR_SEARCH,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -13,6 +20,19 @@ export default (state, action) => {
         ...state,
         recipes: [...state.recipes, action.payload],
         loading: false,
+      };
+    case SEARCH_RECIPES:
+      return {
+        ...state,
+        filtered: state.recipes.filter((recipe) => {
+          const regex = new RegExp(`${action.payload}`, 'gi'); // search for the text, global, case insensitive
+          return recipe.title.match(regex); // searches by title
+        }),
+      };
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        filtered: null,
       };
     case RECIPES_ERROR:
       console.error(action.payload);
