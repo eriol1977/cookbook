@@ -60,4 +60,38 @@ router.post(
   }
 );
 
+// @route   PUT api/recipes/:id
+// @desc    Update recipe
+// @access  Private
+router.put('/:id', auth, async (req, res) => {
+  const { title, ingredients, preparation } = req.body;
+
+  // build recipe object
+  const recipeFields = {};
+  if (title) recipeFields.title = title;
+  if (ingredients) recipeFields.ingredients = ingredients;
+  if (preparation) recipeFields.preparation = preparation;
+
+  try {
+    let recipe = await Recipe.findById(req.params.id);
+    if (!recipe) return res.status(404).json({ msg: 'Recipe not found' });
+
+    // make sure user owns recipe
+    if (recipe.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Not authorized' });
+    }
+
+    recipe = await Recipe.findByIdAndUpdate(
+      req.params.id,
+      { $set: recipeFields }, // sets the recipeFields properties
+      { new: true } // if the recipe isn't found, create a new one
+    );
+
+    res.json(recipe);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

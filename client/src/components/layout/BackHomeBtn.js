@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AddBtn = () => {
+const BackHomeBtn = () => {
   return (
     <div className='fixed-action-btn'>
       <Link
-        to='/recipe'
+        to='/'
         className='btn-floating btn-large blue modal-trigger'
-        title='Add Recipe'
+        title='Home'
       >
-        <i className='large material-icons'>add</i>
+        <i className='large material-icons'>home</i>
       </Link>
     </div>
   );
 };
 
-export default AddBtn;
+export default BackHomeBtn;

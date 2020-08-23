@@ -13,6 +13,7 @@ import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import RecipeState from './context/recipe/RecipeState';
+import RecipeForm from './components/recipes/RecipeForm';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -30,6 +31,7 @@ const App = () => {
               <Switch>
                 <PrivateRoute exact path='/' component={Home} />
                 <PrivateRoute exact path='/about' component={About} />
+                <PrivateRoute exact path='/recipe' component={RecipeForm} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
               </Switch>

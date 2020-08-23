@@ -18,3 +18,6 @@ export const SEARCH_RECIPES = 'SEARCH_RECIPES';
 export const CLEAR_RECIPES = 'CLEAR_RECIPES';
 export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 export const SET_LOADING = 'SET_LOADING';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const SET_CURRENT = 'SET_CURRENT';
+export const UPDATE_RECIPE = 'UPDATE_RECIPE';

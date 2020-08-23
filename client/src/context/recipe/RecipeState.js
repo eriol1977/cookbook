@@ -11,6 +11,9 @@ import {
   SEARCH_RECIPES,
   CLEAR_SEARCH,
   CLEAR_RECIPES,
+  CLEAR_CURRENT,
+  SET_CURRENT,
+  UPDATE_RECIPE,
 } from '../types';
 
 const RecipeState = (props) => {
@@ -54,9 +57,34 @@ const RecipeState = (props) => {
     }
   };
 
+  // Update Recipe
+  const updateRecipe = async (recipe) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      const res = await axios.put(`/api/recipes/${recipe._id}`, recipe, config);
+      dispatch({ type: UPDATE_RECIPE, payload: res.data });
+    } catch (err) {
+      dispatch({ type: RECIPES_ERROR, payload: err.response.statusText });
+    }
+  };
+
   // Search Recipes
   const searchRecipes = (text) => {
     dispatch({ type: SEARCH_RECIPES, payload: text });
+  };
+
+  // Set Current Recipe
+  const setCurrent = (recipe) => {
+    dispatch({ type: SET_CURRENT, payload: recipe });
+  };
+
+  // Clear Current Recipe
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
   };
 
   // Clear Search
@@ -84,10 +112,13 @@ const RecipeState = (props) => {
         error: state.error,
         getRecipes,
         addRecipe,
+        updateRecipe,
         searchRecipes,
         clearSearch,
         setLoading,
         clearRecipes,
+        setCurrent,
+        clearCurrent,
       }}
     >
       {props.children}
