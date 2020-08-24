@@ -151,13 +151,15 @@ const AddRecipe = (props) => {
           <a
             href='#!'
             onClick={onDelete}
-            className='modal-close waves-effect waves-green btn-flat'
+            className='modal-close green btn-flat left'
+            style={{ marginLeft: '18px', marginBottom: '10px' }}
           >
             Yes, proceed
           </a>
           <a
             href='#!'
-            className='modal-close waves-effect waves-green btn-flat'
+            className='modal-close red btn-flat right'
+            style={{ marginRight: '18px', marginBottom: '10px' }}
           >
             No, I've changed my mind
           </a>
