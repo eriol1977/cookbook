@@ -14,6 +14,7 @@ import {
   CLEAR_CURRENT,
   SET_CURRENT,
   UPDATE_RECIPE,
+  DELETE_RECIPE,
 } from '../types';
 
 const RecipeState = (props) => {
@@ -72,6 +73,16 @@ const RecipeState = (props) => {
     }
   };
 
+  // Delete Recipe
+  const deleteRecipe = async (id) => {
+    try {
+      await axios.delete(`/api/recipes/${id}`);
+      dispatch({ type: DELETE_RECIPE, payload: id });
+    } catch (err) {
+      dispatch({ type: RECIPES_ERROR, payload: err.response.statusText });
+    }
+  };
+
   // Search Recipes
   const searchRecipes = (text) => {
     dispatch({ type: SEARCH_RECIPES, payload: text });
@@ -113,6 +124,7 @@ const RecipeState = (props) => {
         getRecipes,
         addRecipe,
         updateRecipe,
+        deleteRecipe,
         searchRecipes,
         clearSearch,
         setLoading,

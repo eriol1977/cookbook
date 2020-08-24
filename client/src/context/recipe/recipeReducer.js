@@ -9,6 +9,7 @@ import {
   CLEAR_CURRENT,
   SET_CURRENT,
   UPDATE_RECIPE,
+  DELETE_RECIPE,
 } from '../types';
 
 export default (state, action) => {
@@ -31,6 +32,16 @@ export default (state, action) => {
         recipes: state.recipes.map((recipe) =>
           recipe._id === action.payload._id ? action.payload : recipe
         ), // the list is mapped to another list which has the updated element instead of the old (when the id is the same), or the element itself in case of different id
+        current: null,
+      };
+    case DELETE_RECIPE:
+      return {
+        ...state,
+        recipes: state.recipes.filter(
+          (recipe) => recipe._id !== action.payload
+        ),
+        current: null,
+        loading: false,
       };
     case SEARCH_RECIPES:
       return {

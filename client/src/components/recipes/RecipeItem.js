@@ -28,7 +28,7 @@ const RecipeItem = ({ recipe }) => {
           <a
             href='#!'
             onClick={editRecipe}
-            className='btn-floating halfway-fab waves-effect waves-light blue'
+            className='btn-floating halfway-fab waves-effect waves-light green'
           >
             <i className='material-icons'>edit</i>
           </a>
