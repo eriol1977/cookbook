@@ -48,6 +48,8 @@ const Login = (props) => {
     <div className='section'>
       <main>
         <center>
+          <h1 className='blue-text'>CookBook</h1>
+
           <h5 className='blue-text'>Please, login into your account</h5>
           <div className='section'></div>
 

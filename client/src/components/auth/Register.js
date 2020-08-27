@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
+import { Link } from 'react-router-dom';
 
 const Register = (props) => {
   const alertContext = useContext(AlertContext);
@@ -49,6 +50,8 @@ const Register = (props) => {
     <div className='section'>
       <main>
         <center>
+          <h1 className='blue-text'>CookBook</h1>
+
           <h5 className='blue-text'>Please, create a new account</h5>
           <div className='section'></div>
 
@@ -134,6 +137,7 @@ const Register = (props) => {
               </form>
             </div>
           </div>
+          <Link to='/login'>Back to Login</Link>
         </center>
 
         <div className='section'></div>

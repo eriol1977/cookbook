@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import RecipeContext from '../../context/recipe/recipeContext';
 
 const SearchBar = () => {
@@ -15,24 +15,22 @@ const SearchBar = () => {
   };
 
   return (
-    <nav
-      style={{ marginBottom: '20px', marginTop: '20px' }}
-      className='amber accent-1'
-    >
-      <div className='nav-wrapper'>
-        <form>
-          <div className='input-field'>
-            <input id='search' type='search' onChange={onChange} />
-            <label className='label-icon' htmlFor='search'>
-              <i className='material-icons grey-text'>search</i>
-            </label>
-            <i className='material-icons grey-text' onClick={onClear}>
-              close
-            </i>
-          </div>
-        </form>
-      </div>
-    </nav>
+    <Fragment>
+      <li>
+        <input
+          id='search'
+          type='search'
+          onChange={onChange}
+          className='white-text'
+          style={{ marginLeft: '10px', width: '50vw' }}
+        />
+      </li>
+      <li>
+        <a href='#!' onClick={onClear}>
+          <i className='material-icons'>close</i>
+        </a>
+      </li>
+    </Fragment>
   );
 };
 

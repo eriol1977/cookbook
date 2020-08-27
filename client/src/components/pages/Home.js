@@ -1,33 +1,29 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import AddBtn from '../layout/AddBtn';
 import Recipes from '../recipes/Recipes';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import SearchBar from '../layout/SearchBar';
+import NavbarHome from '../layout/NavbarHome';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
-    var elems = document.querySelectorAll('.modal');
-    M.Modal.init(elems, null);
-
-    elems = document.querySelectorAll('.fixed-action-btn');
+    var elems = document.querySelectorAll('.fixed-action-btn');
     M.FloatingActionButton.init(elems, null);
-
-    elems = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(elems, null);
 
     authContext.loadUser();
     //eslint-disable-next-line
   }, []); // the square brackets means 'only when component loads'
 
   return (
-    <div className='container'>
+    <Fragment>
       <AddBtn />
-      <SearchBar />
-      <Recipes />
-    </div>
+      <NavbarHome />
+      <div className='container'>
+        <Recipes />
+      </div>
+    </Fragment>
   );
 };
 

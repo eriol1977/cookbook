@@ -11,7 +11,6 @@ import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
-import Navbar from './components/layout/Navbar';
 import RecipeState from './context/recipe/RecipeState';
 import RecipeForm from './components/recipes/RecipeForm';
 
@@ -27,7 +26,6 @@ const App = () => {
           <Router>
             <Fragment>
               <Alerts />
-              <Navbar />
               <Switch>
                 <PrivateRoute exact path='/' component={Home} />
                 <PrivateRoute exact path='/about' component={About} />
