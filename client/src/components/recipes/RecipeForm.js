@@ -3,7 +3,7 @@ import RecipeContext from '../../context/recipe/recipeContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NavbarForm from '../layout/NavbarForm';
 
-const AddRecipe = (props) => {
+const RecipeForm = (props) => {
   const recipeContext = useContext(RecipeContext);
   const { addRecipe, updateRecipe, current } = recipeContext;
 
@@ -113,4 +113,4 @@ const AddRecipe = (props) => {
   );
 };
 
-export default AddRecipe;
+export default RecipeForm;

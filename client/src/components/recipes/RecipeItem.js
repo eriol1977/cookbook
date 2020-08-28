@@ -11,28 +11,22 @@ const RecipeItem = ({ recipe }) => {
 
   const { title } = recipe;
 
-  const editRecipe = () => {
+  const viewRecipe = () => {
     setCurrent(recipe);
-    history.push('/recipe');
+    history.push('/recipeView');
   };
 
   return (
     <div className='col s12 m4 l4'>
-      <div className='card small'>
+      <div
+        className='card small'
+        onClick={viewRecipe}
+        style={{ cursor: 'pointer' }}
+      >
         <div className='card-image'>
           <img src='cookbook.gif' alt='Recipe' />
         </div>
-        {/* the following div, together with some rules in App.css, solves the problem of the halfway button being hidden in a card
-        see: https://github.com/Dogfalo/materialize/issues/4218 */}
-        <div className='card-fab'>
-          <a
-            href='#!'
-            onClick={editRecipe}
-            className='btn-floating halfway-fab waves-effect waves-light green'
-          >
-            <i className='material-icons'>edit</i>
-          </a>
-        </div>
+
         <div className='card-content'>
           <span>
             <strong>{title}</strong>

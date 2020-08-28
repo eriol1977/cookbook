@@ -4,7 +4,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link, useHistory } from 'react-router-dom';
 import Sidenav from './Sidenav';
 
-const Navbar = () => {
+const NavbarForm = () => {
   const recipeContext = useContext(RecipeContext);
   const { deleteRecipe, current } = recipeContext;
 
@@ -97,4 +97,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarForm;
