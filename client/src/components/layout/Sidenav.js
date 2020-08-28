@@ -34,7 +34,7 @@ const Sidenav = () => {
               title='Logout'
               className='sidenav-close'
             >
-              <i className='material-icons'>logout</i>Logout
+              <i className='material-icons'>logout</i>Esci
             </a>
           </li>
         </Fragment>

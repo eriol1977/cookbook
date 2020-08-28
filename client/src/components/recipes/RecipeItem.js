@@ -24,7 +24,7 @@ const RecipeItem = ({ recipe }) => {
         style={{ cursor: 'pointer' }}
       >
         <div className='card-image'>
-          <img src='cookbook.gif' alt='Recipe' />
+          <img src='cookbook.gif' alt='Ricetta' />
         </div>
 
         <div className='card-content'>

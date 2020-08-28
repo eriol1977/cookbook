@@ -19,7 +19,7 @@ const AddBtn = () => {
         href='#!'
         onClick={onAddRecipe}
         className='btn-floating btn-large blue modal-trigger'
-        title='Add Recipe'
+        title='Aggiungi ricetta'
       >
         <i className='large material-icons'>add</i>
       </a>

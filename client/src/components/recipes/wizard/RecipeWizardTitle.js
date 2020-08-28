@@ -5,7 +5,7 @@ const RecipeWizardTitle = ({ title, onChange }) => {
   return (
     <Fragment>
       <h6>
-        Insert a nice <strong>title</strong> for your recipe...
+        Inserisci un bel <strong>titolo</strong> per la tua ricetta...
       </h6>
       <div className='input-field'>
         <input type='text' name='title' value={title} onChange={onChange} />

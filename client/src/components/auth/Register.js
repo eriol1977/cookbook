@@ -38,9 +38,9 @@ const Register = (props) => {
     e.preventDefault();
 
     if (name === '' || email === '' || password === '') {
-      setAlert('Please enter all fields', 'danger');
+      setAlert('Compilare tutti i campi, per favore', 'danger');
     } else if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
+      setAlert('Le password non combaciano', 'danger');
     } else {
       register({ name, email, password });
     }
@@ -52,7 +52,6 @@ const Register = (props) => {
         <center>
           <h1 className='blue-text'>CookBook</h1>
 
-          <h5 className='blue-text'>Please, create a new account</h5>
           <div className='section'></div>
 
           <div className='container'>
@@ -71,7 +70,7 @@ const Register = (props) => {
 
                 <div className='row'>
                   <div className='input-field col s12'>
-                    <label htmlFor='name'>Name</label>
+                    <label htmlFor='name'>Nome completo</label>
                     <input
                       type='text'
                       name='name'
@@ -84,7 +83,7 @@ const Register = (props) => {
 
                 <div className='row'>
                   <div className='input-field col s12'>
-                    <label htmlFor='email'>Email Address</label>
+                    <label htmlFor='email'>Email</label>
                     <input
                       type='email'
                       name='email'
@@ -110,7 +109,7 @@ const Register = (props) => {
 
                 <div className='row'>
                   <div className='input-field col s12'>
-                    <label htmlFor='password2'>Confirm Password</label>
+                    <label htmlFor='password2'>Ripeti la password</label>
                     <input
                       type='password'
                       name='password2'
@@ -130,14 +129,14 @@ const Register = (props) => {
                       name='btn_register'
                       className='col s12 btn btn-large waves-effect blue'
                     >
-                      Register
+                      Registrati
                     </button>
                   </div>
                 </center>
               </form>
             </div>
           </div>
-          <Link to='/login'>Back to Login</Link>
+          <Link to='/login'>Pagina di accesso</Link>
         </center>
 
         <div className='section'></div>

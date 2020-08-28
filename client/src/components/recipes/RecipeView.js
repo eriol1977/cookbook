@@ -25,11 +25,11 @@ const RecipeView = () => {
         <h5>{title}</h5>
         <br />
 
-        <h6>Ingredients</h6>
+        <h6>Ingredienti</h6>
         <div>{ingredients}</div>
         <br />
 
-        <h6>Preparation</h6>
+        <h6>Preparazione</h6>
         <div>{preparation}</div>
       </div>
     </Fragment>

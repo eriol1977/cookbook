@@ -22,7 +22,7 @@ const Recipes = () => {
   };
 
   if (recipes !== null && recipes.length === 0 && !loading) {
-    return <h5>Please add a recipe</h5>;
+    return <h5>Qui vedrai le tue ricette! Prova ad aggiungerne una...</h5>;
   }
 
   // the recipes (all of them, or just those filtered by the search bar)

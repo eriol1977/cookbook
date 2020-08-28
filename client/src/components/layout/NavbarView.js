@@ -14,14 +14,14 @@ const NavbarView = () => {
         <div className='nav-wrapper'>
           <ul id='nav-mobile' className='left'>
             <li>
-              <Link to='/' title='Back to recipe list'>
+              <Link to='/' title='Torna alle ricette'>
                 <i className='material-icons'>arrow_back</i>
               </Link>
             </li>
           </ul>
           <ul id='nav-mobile' className='right'>
             <li>
-              <a href='#!' onClick={editRecipe} title='Edit recipe'>
+              <a href='#!' onClick={editRecipe} title='Modifica ricetta'>
                 <i className='material-icons'>edit</i>
               </a>
             </li>

@@ -50,10 +50,10 @@ const RecipeWizard = (props) => {
     if (validateForm()) {
       if (current === null) {
         addRecipe(recipe);
-        M.toast({ html: `"${title}" added` });
+        M.toast({ html: `"${title}" aggiunta` });
       } else {
         updateRecipe(recipe);
-        M.toast({ html: `"${title}" updated` });
+        M.toast({ html: `"${title}" modificata` });
       }
       props.history.push('/');
     }
@@ -63,13 +63,13 @@ const RecipeWizard = (props) => {
     let valid = true;
     if (title.trim() === '') {
       valid = false;
-      M.toast({ html: 'Please enter a title' });
+      M.toast({ html: 'Inserisci un titolo, per favore' });
     } else if (ingredients.trim() === '') {
       valid = false;
-      M.toast({ html: 'Please enter the ingredients' });
+      M.toast({ html: 'Inserisci gli ingredienti, per favore' });
     } else if (preparation.trim() === '') {
       valid = false;
-      M.toast({ html: 'Please enter the preparation details' });
+      M.toast({ html: 'Inserisci i dettagli della preparazione, per favore' });
     }
     return valid;
   };
@@ -78,7 +78,7 @@ const RecipeWizard = (props) => {
     <Fragment>
       <NavbarWizard />
       <div className='container'>
-        <h5>{current ? 'Edit Recipe' : 'Add Recipe'}</h5>
+        <h5>{current ? 'Modifica Ricetta' : 'Aggiungi Ricetta'}</h5>
         <br />
 
         <form>
@@ -109,7 +109,7 @@ const RecipeWizard = (props) => {
                 href='#!'
                 className='btn-floating btn-large blue'
                 onClick={previousPage}
-                title='Previous page'
+                title='Pagina precedente'
               >
                 <i className='material-icons'>keyboard_arrow_left</i>
               </a>
@@ -122,7 +122,7 @@ const RecipeWizard = (props) => {
                 href='#!'
                 className='btn-floating btn-large blue'
                 onClick={nextPage}
-                title='Next page'
+                title='Pagina successiva'
               >
                 <i className='material-icons'>keyboard_arrow_right</i>
               </a>
@@ -135,7 +135,7 @@ const RecipeWizard = (props) => {
                 href='#!'
                 onClick={onSave}
                 className='btn-floating btn-large green'
-                title={current ? 'Update Recipe' : 'Add Recipe'}
+                title={current ? 'Modifica Ricetta' : 'Aggiungi Ricetta'}
               >
                 <i className='large material-icons'>save</i>
               </a>

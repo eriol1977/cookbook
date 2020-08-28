@@ -35,7 +35,7 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
-      setAlert('Please fill in all fields', 'danger');
+      setAlert('Compilare tutti i campi, per favore', 'danger');
     } else {
       login({
         email,
@@ -50,7 +50,6 @@ const Login = (props) => {
         <center>
           <h1 className='blue-text'>CookBook</h1>
 
-          <h5 className='blue-text'>Please, login into your account</h5>
           <div className='section'></div>
 
           <div className='container'>
@@ -69,7 +68,7 @@ const Login = (props) => {
 
                 <div className='row'>
                   <div className='input-field col s12'>
-                    <label htmlFor='email'>Email Address</label>
+                    <label htmlFor='email'>Email</label>
                     <input
                       type='email'
                       name='email'
@@ -101,14 +100,14 @@ const Login = (props) => {
                       name='btn_login'
                       className='col s12 btn btn-large waves-effect blue'
                     >
-                      Login
+                      Accedi
                     </button>
                   </div>
                 </center>
               </form>
             </div>
           </div>
-          <Link to='/register'>Create new account</Link>
+          <Link to='/register'>Crea un nuovo account</Link>
         </center>
 
         <div className='section'></div>

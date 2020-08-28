@@ -5,7 +5,7 @@ const RecipeWizardIngredients = ({ ingredients, onChange }) => {
   return (
     <Fragment>
       <h6>
-        ...now the <strong>ingredients</strong>...
+        ...ora gli <strong>ingredienti</strong>...
       </h6>
       <div className='input-field'>
         <textarea

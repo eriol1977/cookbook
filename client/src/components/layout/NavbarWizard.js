@@ -28,7 +28,7 @@ const NavbarWizard = () => {
         <div className='nav-wrapper'>
           <ul id='nav-mobile' className='left'>
             <li>
-              <Link to='/' title='Back to recipe list'>
+              <Link to='/' title='Torna alle ricette'>
                 <i className='material-icons'>arrow_back</i>
               </Link>
             </li>
@@ -38,7 +38,7 @@ const NavbarWizard = () => {
               <li>
                 <a
                   href='#deleteConfirmation'
-                  title='Delete recipe'
+                  title='Elimina ricetta'
                   className='modal-trigger'
                 >
                   <i className='material-icons'>delete</i>
@@ -53,11 +53,11 @@ const NavbarWizard = () => {
       {current && (
         <div id='deleteConfirmation' className='modal'>
           <div className='modal-content'>
-            <h4>Delete Recipe</h4>
+            <h4>Elimina Ricetta</h4>
             <p>
-              You are about to delete <strong>"{current.title}"</strong>
+              Stai per eliminare <strong>"{current.title}"</strong>
             </p>
-            <p>Are you sure?</p>
+            <p>Confermi?</p>
           </div>
           <div className='modal-footer'>
             <a
@@ -66,14 +66,14 @@ const NavbarWizard = () => {
               className='modal-close red btn-flat'
               style={{ marginRight: '20px', marginBottom: '10px' }}
             >
-              DO IT!
+              ELIMINA!
             </a>
             <a
               href='#!'
               className='modal-close btn-flat'
               style={{ marginRight: '20px', marginBottom: '10px' }}
             >
-              Cancel
+              Annulla
             </a>
           </div>
         </div>

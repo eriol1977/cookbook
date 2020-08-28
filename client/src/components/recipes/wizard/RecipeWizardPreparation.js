@@ -5,7 +5,7 @@ const RecipeWizardPreparation = ({ preparation, onChange }) => {
   return (
     <Fragment>
       <h6>
-        ...and finally, the <strong>preparation</strong> details.
+        ...e infine, i dettagli della <strong>preparazione</strong>.
       </h6>
       <div className='input-field'>
         <textarea
