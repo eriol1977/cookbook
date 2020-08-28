@@ -12,7 +12,7 @@ import Alerts from './components/layout/Alerts';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import RecipeState from './context/recipe/RecipeState';
-import RecipeForm from './components/recipes/RecipeForm';
+import RecipeWizard from './components/recipes/wizard/RecipeWizard';
 import RecipeView from './components/recipes/RecipeView';
 
 if (localStorage.token) {
@@ -30,7 +30,7 @@ const App = () => {
               <Switch>
                 <PrivateRoute exact path='/' component={Home} />
                 <PrivateRoute exact path='/about' component={About} />
-                <PrivateRoute exact path='/recipe' component={RecipeForm} />
+                <PrivateRoute exact path='/recipe' component={RecipeWizard} />
                 <PrivateRoute exact path='/recipeView' component={RecipeView} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />

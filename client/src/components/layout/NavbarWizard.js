@@ -2,9 +2,8 @@ import React, { useContext, Fragment, useEffect } from 'react';
 import RecipeContext from '../../context/recipe/recipeContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link, useHistory } from 'react-router-dom';
-import Sidenav from './Sidenav';
 
-const NavbarForm = () => {
+const NavbarWizard = () => {
   const recipeContext = useContext(RecipeContext);
   const { deleteRecipe, current } = recipeContext;
 
@@ -13,9 +12,6 @@ const NavbarForm = () => {
   useEffect(() => {
     var elems = document.querySelectorAll('.modal');
     M.Modal.init(elems, null);
-
-    elems = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(elems, null);
     //eslint-disable-next-line
   }, []);
 
@@ -32,13 +28,9 @@ const NavbarForm = () => {
         <div className='nav-wrapper'>
           <ul id='nav-mobile' className='left'>
             <li>
-              <a
-                href='#!'
-                className='sidenav-trigger show-on-large'
-                data-target='slide-out'
-              >
-                <i className='material-icons'>menu</i>
-              </a>
+              <Link to='/' title='Back to recipe list'>
+                <i className='material-icons'>arrow_back</i>
+              </Link>
             </li>
           </ul>
           <ul id='nav-mobile' className='right'>
@@ -53,16 +45,9 @@ const NavbarForm = () => {
                 </a>
               </li>
             )}
-            <li>
-              <Link to='/' title='Back to recipe list'>
-                <i className='material-icons'>arrow_back</i>
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>
-
-      <Sidenav />
 
       {/* delete confirmation modal */}
       {current && (
@@ -97,4 +82,4 @@ const NavbarForm = () => {
   );
 };
 
-export default NavbarForm;
+export default NavbarWizard;
