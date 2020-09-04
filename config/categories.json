@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Antipasti e Stuzzichini",
+    "description": "Antipasti e Stuzzichini",
+    "image": "entry.jpg"
+  },
+  {
+    "name": "Conserve e Confetture",
+    "description": "Conserve e Confetture",
+    "image": "jam.jpg"
+  },
+  {
+    "name": "Zuppe e Minestre",
+    "description": "Zuppe e Minestre",
+    "image": "soup.jpg"
+  },
+  {
+    "name": "Uova",
+    "description": "Ricette con le uova",
+    "image": "eggs.jpg"
+  },
+  {
+    "name": "Dolci e Dessert",
+    "description": "Dolci e Dessert",
+    "image": "dessert.jpg"
+  },
+  {
+    "name": "Bevande",
+    "description": "Bevande e Cocktail",
+    "image": "drinks.jpg"
+  },
+  {
+    "name": "Contorni e Verdure",
+    "description": "Contorni e Verdure",
+    "image": "vegetables.jpg"
+  },
+  {
+    "name": "Insalate",
+    "description": "Insalate",
+    "image": "salad.jpg"
+  },
+  {
+    "name": "Salse e Sughi",
+    "description": "Salse e Sughi",
+    "image": "sauce.jpg"
+  },
+  {
+    "name": "Pane, Pizza e Focaccia",
+    "description": "Pane, Pizza e Focaccia",
+    "image": "bread.jpg"
+  },
+  {
+    "name": "Torte Salate",
+    "description": "Torte Salate",
+    "image": "pies.jpg"
+  },
+  {
+    "name": "Pasta",
+    "description": "Pasta",
+    "image": "pasta.jpg"
+  },
+  {
+    "name": "Riso",
+    "description": "Riso",
+    "image": "rice.jpg"
+  },
+  {
+    "name": "Carne",
+    "description": "Carne",
+    "image": "meat.jpg"
+  },
+  {
+    "name": "Pollo",
+    "description": "Pollo",
+    "image": "chicken.jpg"
+  },
+  {
+    "name": "Pesce",
+    "description": "Pesce",
+    "image": "fish.jpg"
+  }
+]

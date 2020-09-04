@@ -17,6 +17,10 @@ const RecipeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  category: {
+    type: mongoose.Schema.Types.ObjectId, // MongoDB id type
+    ref: 'categories', // collection we are referring to
+  },
 });
 
 module.exports = mongoose.model('recipe', RecipeSchema);

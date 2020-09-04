@@ -22,3 +22,5 @@ export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const SET_CURRENT = 'SET_CURRENT';
 export const UPDATE_RECIPE = 'UPDATE_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
+// categories
+export const GET_CATEGORIES = 'GET_CATEGORIES';

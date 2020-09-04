@@ -14,6 +14,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import RecipeState from './context/recipe/RecipeState';
 import RecipeWizard from './components/recipes/wizard/RecipeWizard';
 import RecipeView from './components/recipes/RecipeView';
+import CategoryState from './context/category/CategoryState';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -23,21 +24,27 @@ const App = () => {
   return (
     <AuthState>
       <RecipeState>
-        <AlertState>
-          <Router>
-            <Fragment>
-              <Alerts />
-              <Switch>
-                <PrivateRoute exact path='/' component={Home} />
-                <PrivateRoute exact path='/about' component={About} />
-                <PrivateRoute exact path='/recipe' component={RecipeWizard} />
-                <PrivateRoute exact path='/recipeView' component={RecipeView} />
-                <Route exact path='/register' component={Register} />
-                <Route exact path='/login' component={Login} />
-              </Switch>
-            </Fragment>
-          </Router>
-        </AlertState>
+        <CategoryState>
+          <AlertState>
+            <Router>
+              <Fragment>
+                <Alerts />
+                <Switch>
+                  <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/about' component={About} />
+                  <PrivateRoute exact path='/recipe' component={RecipeWizard} />
+                  <PrivateRoute
+                    exact
+                    path='/recipeView'
+                    component={RecipeView}
+                  />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login} />
+                </Switch>
+              </Fragment>
+            </Router>
+          </AlertState>
+        </CategoryState>
       </RecipeState>
     </AuthState>
   );
