@@ -31,6 +31,7 @@ const RecipeWizard = (props) => {
         title: '',
         ingredients: '',
         preparation: '',
+        mainImage: null,
         category: null,
       });
     }
@@ -44,6 +45,7 @@ const RecipeWizard = (props) => {
     title: '',
     ingredients: '',
     preparation: '',
+    mainImage: null,
     category: null,
   });
   var [page, setPage] = useState(1);
@@ -64,7 +66,11 @@ const RecipeWizard = (props) => {
 
   const onCategorySelected = (category) => {
     setCategory(category);
-    setRecipe({ ...recipe, category: category._id });
+    setRecipe({
+      ...recipe,
+      category: category._id,
+      mainImage: category.image,
+    });
   };
 
   const onSave = (e) => {

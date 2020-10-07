@@ -2,7 +2,6 @@ import React, { useContext, Fragment, useEffect, useState } from 'react';
 import RecipeContext from '../../context/recipe/recipeContext';
 import CategoryContext from '../../context/category/categoryContext';
 import NavbarView from '../layout/NavbarView';
-import CategoryItem from '../categories/CategoryItem';
 
 const RecipeView = () => {
   const recipeContext = useContext(RecipeContext);
