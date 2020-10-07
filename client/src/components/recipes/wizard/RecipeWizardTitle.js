@@ -2,7 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CategoryGrid from '../../categories/CategoryGrid';
 
-const RecipeWizardTitle = ({ title, onChange }) => {
+const RecipeWizardTitle = ({
+  title,
+  onChange,
+  onCategorySelected,
+  selectedCategory,
+}) => {
   return (
     <Fragment>
       <h6>
@@ -15,9 +20,10 @@ const RecipeWizardTitle = ({ title, onChange }) => {
       <br />
       <br />
       <h6>
-        Scegli una <strong>categoria</strong>:{'           '}
+        Scegli una <strong>categoria</strong>:{' '}
+        {selectedCategory && selectedCategory.name}
       </h6>
-      <CategoryGrid />
+      <CategoryGrid onSelected={onCategorySelected} />
     </Fragment>
   );
 };
@@ -25,6 +31,8 @@ const RecipeWizardTitle = ({ title, onChange }) => {
 RecipeWizardTitle.propTypes = {
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onCategorySelected: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.object,
 };
 
 export default RecipeWizardTitle;

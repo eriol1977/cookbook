@@ -18,4 +18,17 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route   GET api/categories/:id
+// @desc    Get specific category
+// @access  Private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id);
+    res.json(category);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

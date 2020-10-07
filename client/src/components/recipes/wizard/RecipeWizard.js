@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, Fragment } from 'react';
 import RecipeContext from '../../../context/recipe/recipeContext';
+import CategoryContext from '../../../context/category/categoryContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NavbarWizard from '../../layout/NavbarWizard';
 import RecipeWizardTitle from './RecipeWizardTitle';
@@ -10,27 +11,43 @@ const RecipeWizard = (props) => {
   const recipeContext = useContext(RecipeContext);
   const { addRecipe, updateRecipe, current } = recipeContext;
 
+  const categoryContext = useContext(CategoryContext);
+  const {
+    getRecipeCategory,
+    clearRecipeCategory,
+    recipeCategory,
+  } = categoryContext;
+
   useEffect(() => {
     var elems = document.querySelectorAll('.fixed-action-btn');
     M.FloatingActionButton.init(elems, null);
 
+    clearRecipeCategory();
     if (current !== null) {
       setRecipe(current);
+      if (current.category) getRecipeCategory(current.category);
     } else {
       setRecipe({
         title: '',
         ingredients: '',
         preparation: '',
+        category: null,
       });
     }
   }, [recipeContext, current]);
+
+  useEffect(() => {
+    setCategory(recipeCategory);
+  }, [recipeCategory]);
 
   const [recipe, setRecipe] = useState({
     title: '',
     ingredients: '',
     preparation: '',
+    category: null,
   });
   var [page, setPage] = useState(1);
+  const [category, setCategory] = useState(null);
 
   const { title, ingredients, preparation } = recipe;
 
@@ -44,6 +61,11 @@ const RecipeWizard = (props) => {
 
   const onChange = (e) =>
     setRecipe({ ...recipe, [e.target.name]: e.target.value }); // spread operator to take all the actual properties of recipe
+
+  const onCategorySelected = (category) => {
+    setCategory(category);
+    setRecipe({ ...recipe, category: category._id });
+  };
 
   const onSave = (e) => {
     e.preventDefault();
@@ -83,7 +105,12 @@ const RecipeWizard = (props) => {
 
         <form>
           {page === 1 && (
-            <RecipeWizardTitle title={title} onChange={onChange} />
+            <RecipeWizardTitle
+              title={title}
+              onChange={onChange}
+              onCategorySelected={onCategorySelected}
+              selectedCategory={category}
+            />
           )}
 
           {page === 2 && (

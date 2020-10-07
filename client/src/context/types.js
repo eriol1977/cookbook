@@ -24,3 +24,5 @@ export const UPDATE_RECIPE = 'UPDATE_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
 // categories
 export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const GET_CATEGORY = 'GET_CATEGORY';
+export const CLEAR_CATEGORY = 'CLEAR_CATEGORY';

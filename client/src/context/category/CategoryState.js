@@ -3,11 +3,17 @@ import axios from 'axios';
 import CategoryContext from './categoryContext';
 import categoryReducer from './categoryReducer';
 
-import { GET_CATEGORIES, SET_LOADING } from '../types';
+import {
+  GET_CATEGORIES,
+  GET_CATEGORY,
+  CLEAR_CATEGORY,
+  SET_LOADING,
+} from '../types';
 
 const CategoryState = (props) => {
   const initialState = {
     categories: null,
+    recipeCategory: null,
     loading: false,
   };
 
@@ -27,6 +33,25 @@ const CategoryState = (props) => {
     }
   };
 
+  // Get Recipe Category
+  const getRecipeCategory = async (id) => {
+    try {
+      setLoading();
+      const res = await axios.get(`/api/categories/${id}`);
+      dispatch({
+        type: GET_CATEGORY,
+        payload: res.data,
+      });
+    } catch (err) {
+      // TODO
+    }
+  };
+
+  // Clear Recipe Category
+  const clearRecipeCategory = () => {
+    dispatch({ type: CLEAR_CATEGORY });
+  };
+
   // Set loading to true
   const setLoading = () => {
     dispatch({ type: SET_LOADING });
@@ -36,8 +61,11 @@ const CategoryState = (props) => {
     <CategoryContext.Provider
       value={{
         categories: state.categories,
+        recipeCategory: state.recipeCategory,
         loading: state.loading,
         getCategories,
+        getRecipeCategory,
+        clearRecipeCategory,
       }}
     >
       {props.children}
