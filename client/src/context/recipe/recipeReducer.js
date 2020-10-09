@@ -47,8 +47,12 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.recipes.filter((recipe) => {
-          const regex = new RegExp(`${action.payload}`, 'gi'); // search for the text, global, case insensitive
-          return recipe.title.match(regex); // searches by title
+          const regex = new RegExp(`${action.payload.text}`, 'gi'); // search for the text, global, case insensitive
+          return (
+            (action.payload.byTitle && recipe.title.match(regex)) ||
+            (action.payload.byIngredients && recipe.ingredients.match(regex)) ||
+            (action.payload.byPreparation && recipe.preparation.match(regex))
+          );
         }),
       };
     case SET_CURRENT:

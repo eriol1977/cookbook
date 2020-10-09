@@ -6,9 +6,10 @@ import Spinner from '../layout/Spinner';
 const Recipes = () => {
   const recipeContext = useContext(RecipeContext);
 
-  const { recipes, getRecipes, loading, filtered } = recipeContext;
+  const { recipes, getRecipes, loading, filtered, clearSearch } = recipeContext;
 
   useEffect(() => {
+    clearSearch();
     getRecipes();
     //eslint-disable-next-line
   }, []);

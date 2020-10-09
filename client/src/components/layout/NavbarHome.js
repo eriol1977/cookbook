@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect } from 'react';
-import SearchBar from './SearchBar';
+import React, { Fragment, useEffect, useState } from 'react';
 import Sidenav from './Sidenav';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
   useEffect(() => {
@@ -9,6 +9,8 @@ const Navbar = () => {
     M.Sidenav.init(elems, null);
     //eslint-disable-next-line
   }, []);
+
+  const [searchBarVisible, setSearchBarVisible] = useState(false);
 
   return (
     <Fragment>
@@ -24,13 +26,28 @@ const Navbar = () => {
                 <i className='material-icons'>menu</i>
               </a>
             </li>
+          </ul>
+          <ul id='nav-mobile' className='right'>
             <li>
-              <i className='material-icons'>search</i>
+              <a
+                href='#!'
+                onClick={() => setSearchBarVisible(!searchBarVisible)}
+              >
+                <i
+                  className='material-icons'
+                  style={{
+                    marginRight: '20px',
+                    color: searchBarVisible ? '#ffff00' : 'white',
+                  }}
+                >
+                  search
+                </i>
+              </a>
             </li>
-            <SearchBar />
           </ul>
         </div>
       </nav>
+      {searchBarVisible && <SearchBar />}
 
       <Sidenav />
     </Fragment>

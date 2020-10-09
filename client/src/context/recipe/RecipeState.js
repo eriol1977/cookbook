@@ -84,8 +84,11 @@ const RecipeState = (props) => {
   };
 
   // Search Recipes
-  const searchRecipes = (text) => {
-    dispatch({ type: SEARCH_RECIPES, payload: text });
+  const searchRecipes = (text, byTitle, byIngredients, byPreparation) => {
+    dispatch({
+      type: SEARCH_RECIPES,
+      payload: { text, byTitle, byIngredients, byPreparation },
+    });
   };
 
   // Set Current Recipe
