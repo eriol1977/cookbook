@@ -35,10 +35,12 @@ const RecipeWizard = (props) => {
         category: null,
       });
     }
+    //eslint-disable-next-line
   }, [recipeContext, current]);
 
   useEffect(() => {
     setCategory(recipeCategory);
+    //eslint-disable-next-line
   }, [recipeCategory]);
 
   const [recipe, setRecipe] = useState({

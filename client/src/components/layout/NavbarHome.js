@@ -4,6 +4,7 @@ import Sidenav from './Sidenav';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './SearchBar';
 import RecipeContext from '../../context/recipe/recipeContext';
+import CategoryBar from './CategoryBar';
 
 const Navbar = () => {
   const recipeContext = useContext(RecipeContext);
@@ -18,11 +19,30 @@ const Navbar = () => {
   }, []);
 
   const [searchBarVisible, setSearchBarVisible] = useState(false);
+  const [categBarVisible, setCategBarVisible] = useState(false);
 
   const onAddRecipe = (e) => {
     clearCurrent();
     history.push('/recipe');
   };
+
+  const onSearchButtonClicked = () => {
+    if(searchBarVisible) {
+      setSearchBarVisible(false);
+    }else{
+      setSearchBarVisible(true);
+      setCategBarVisible(false);
+    }    
+  }
+
+  const onCategButtonClicked = () => {
+    if(categBarVisible) {
+      setCategBarVisible(false);
+    }else{
+      setCategBarVisible(true);
+      setSearchBarVisible(false);
+    }    
+  }
 
   return (
     <Fragment>
@@ -46,13 +66,29 @@ const Navbar = () => {
                 onClick={onAddRecipe}
                 title='Aggiungi ricetta'
               >
-                <i className='large material-icons'>add</i>
+                <i className='material-icons'>add</i>
               </a>
             </li>
             <li>
               <a
                 href='#!'
-                onClick={() => setSearchBarVisible(!searchBarVisible)}
+                onClick={onCategButtonClicked}
+                title='Cerca per categorua'
+              >
+                <i
+                  className='material-icons'
+                  style={{
+                    color: categBarVisible ? '#ffff00' : 'white',
+                  }}
+                >
+                  restaurant
+                </i>
+              </a>
+            </li>
+            <li>
+              <a
+                href='#!'
+                onClick={onSearchButtonClicked}
                 title='Cerca ricette'
               >
                 <i
@@ -70,6 +106,7 @@ const Navbar = () => {
         </div>
       </nav>
       {searchBarVisible && <SearchBar />}
+      {categBarVisible && <CategoryBar />}
 
       <Sidenav />
     </Fragment>

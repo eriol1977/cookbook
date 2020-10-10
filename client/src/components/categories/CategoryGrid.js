@@ -31,7 +31,7 @@ const CategoryGrid = ({ onSelected }) => {
   return (
     <Fragment>
       {categories !== null && !loading ? (
-        <div className='carousel'>
+        <div className='carousel' style={{height: '250px'}}>
           {categories.map((category) => (
             <CategoryItem
               category={category}

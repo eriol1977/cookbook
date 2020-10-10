@@ -9,6 +9,7 @@ import {
   SET_LOADING,
   GET_RECIPES,
   SEARCH_RECIPES,
+  SEARCH_RECIPES_BY_CATEGORY,
   CLEAR_SEARCH,
   CLEAR_RECIPES,
   CLEAR_CURRENT,
@@ -91,6 +92,14 @@ const RecipeState = (props) => {
     });
   };
 
+  // Search Recipes by Category
+  const searchRecipesByCategory = (id) => {
+    dispatch({
+      type: SEARCH_RECIPES_BY_CATEGORY,
+      payload: id,
+    });
+  };
+
   // Set Current Recipe
   const setCurrent = (recipe) => {
     dispatch({ type: SET_CURRENT, payload: recipe });
@@ -129,6 +138,7 @@ const RecipeState = (props) => {
         updateRecipe,
         deleteRecipe,
         searchRecipes,
+        searchRecipesByCategory,
         clearSearch,
         setLoading,
         clearRecipes,

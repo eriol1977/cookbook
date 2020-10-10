@@ -17,8 +17,6 @@ const RecipeWizardTitle = ({
         <input type='text' name='title' value={title} onChange={onChange} />
       </div>
       <br />
-      <br />
-      <br />
       <h6>
         Scegli una <strong>categoria</strong>:{' '}
         {selectedCategory && selectedCategory.name}

@@ -4,6 +4,7 @@ import {
   SET_LOADING,
   GET_RECIPES,
   SEARCH_RECIPES,
+  SEARCH_RECIPES_BY_CATEGORY,
   CLEAR_SEARCH,
   CLEAR_RECIPES,
   CLEAR_CURRENT,
@@ -54,6 +55,11 @@ export default (state, action) => {
             (action.payload.byPreparation && recipe.preparation.match(regex))
           );
         }),
+      };
+    case SEARCH_RECIPES_BY_CATEGORY:
+      return {
+        ...state,
+        filtered: state.recipes.filter((recipe) => recipe.category === action.payload),
       };
     case SET_CURRENT:
       return {

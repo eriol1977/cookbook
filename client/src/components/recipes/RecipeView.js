@@ -18,6 +18,7 @@ const RecipeView = () => {
     clearRecipeCategory();
     setRecipe(current);
     if (current.category) getRecipeCategory(current.category);
+    //eslint-disable-next-line
   }, [recipeContext, current]);
 
   const [recipe, setRecipe] = useState({

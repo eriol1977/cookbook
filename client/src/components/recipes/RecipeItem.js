@@ -31,7 +31,7 @@ const RecipeItem = ({ recipe }) => {
           )}
         </div>
 
-        <div className='card-content'>
+        <div className='card-content center'>
           <span>
             <strong>{title}</strong>
           </span>
