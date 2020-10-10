@@ -1,9 +1,16 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidenav from './Sidenav';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './SearchBar';
+import RecipeContext from '../../context/recipe/recipeContext';
 
 const Navbar = () => {
+  const recipeContext = useContext(RecipeContext);
+  const { clearCurrent } = recipeContext;
+
+  const history = useHistory();
+
   useEffect(() => {
     var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems, null);
@@ -11,6 +18,11 @@ const Navbar = () => {
   }, []);
 
   const [searchBarVisible, setSearchBarVisible] = useState(false);
+
+  const onAddRecipe = (e) => {
+    clearCurrent();
+    history.push('/recipe');
+  };
 
   return (
     <Fragment>
@@ -31,7 +43,17 @@ const Navbar = () => {
             <li>
               <a
                 href='#!'
+                onClick={onAddRecipe}
+                title='Aggiungi ricetta'
+              >
+                <i className='large material-icons'>add</i>
+              </a>
+            </li>
+            <li>
+              <a
+                href='#!'
                 onClick={() => setSearchBarVisible(!searchBarVisible)}
+                title='Cerca ricette'
               >
                 <i
                   className='material-icons'

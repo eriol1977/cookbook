@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
-import AddBtn from '../layout/AddBtn';
 import Recipes from '../recipes/Recipes';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import NavbarHome from '../layout/NavbarHome';
@@ -18,7 +17,6 @@ const Home = () => {
 
   return (
     <Fragment>
-      <AddBtn />
       <NavbarHome />
       <div className='container'>
         <Recipes />
