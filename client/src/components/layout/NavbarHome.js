@@ -81,7 +81,7 @@ const Navbar = () => {
                     color: categBarVisible ? '#ffff00' : 'white',
                   }}
                 >
-                  restaurant
+                  view_carousel
                 </i>
               </a>
             </li>

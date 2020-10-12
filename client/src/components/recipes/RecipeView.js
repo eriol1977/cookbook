@@ -33,29 +33,31 @@ const RecipeView = () => {
     <Fragment>
       <NavbarView />
       <div className='container'>
-        <h5>{title}</h5>
-        <br />
-
+        <table cellSpacing='0' cellPadding='0' style={{borderCollapse: 'unset'}}><tr>
+        <td><h5>{title}</h5></td>
+        <td>
         {recipeCategory && (
-          <Fragment>
-            <h6>Categoria: {recipeCategory.name}</h6>
-            <br />
             <img
               src={recipeCategory.image}
               alt='category'
+              title={recipeCategory.name}
               style={{ width: '100px' }}
+              className='right'
             />
-          </Fragment>
         )}
-        <br />
+        </td>
+        </tr></table>
+
+        <strong>Ingredienti</strong>
+        <div className='card-panel yellow lighten-4'>
+          <div style={{whiteSpace: 'pre-wrap'}}>{ingredients}</div>
+        </div>
         <br />
 
-        <h6>Ingredienti</h6>
-        <div>{ingredients}</div>
-        <br />
-
-        <h6>Preparazione</h6>
-        <div>{preparation}</div>
+        <strong>Preparazione</strong>
+        <div className='card-panel green lighten-4'>
+          <div style={{whiteSpace: 'pre-wrap'}}>{preparation}</div>
+        </div>
       </div>
     </Fragment>
   );
