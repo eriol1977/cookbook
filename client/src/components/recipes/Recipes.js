@@ -1,30 +1,35 @@
 import React, { useContext, Fragment, useEffect } from 'react';
 import RecipeContext from '../../context/recipe/recipeContext';
-import RecipeItem from './RecipeItem';
+import CategoryContext from '../../context/category/categoryContext';
 import Spinner from '../layout/Spinner';
+import RecipesByCategory from './RecipesByCategory';
 
 const Recipes = () => {
   const recipeContext = useContext(RecipeContext);
 
-  const { recipes, getRecipes, loading, filtered, clearSearch } = recipeContext;
+  const { recipes, getRecipes, loading, clearSearch } = recipeContext;
+
+  const categoryContext = useContext(CategoryContext);
+  const { categories, getCategories } = categoryContext;
 
   useEffect(() => {
     clearSearch();
     getRecipes();
+    getCategories();
     //eslint-disable-next-line
   }, []);
 
-  // Splits the given array in groups of elements
-  const splitArrayInGroups = (original) => {
-    const copy = Array.from(original);
-    var groups = [];
-    while (copy.length > 0) groups.push(copy.splice(0, 4));
-    return groups;
-  };
+  // // Splits the given array in groups of elements
+  // const splitArrayInGroups = (original) => {
+  //   const copy = Array.from(original);
+  //   var groups = [];
+  //   while (copy.length > 0) groups.push(copy.splice(0, 4));
+  //   return groups;
+  // };
 
-  if (recipes !== null && recipes.length === 0 && !loading) {
-    return <h5>Qui vedrai le tue ricette! Prova ad aggiungerne una...</h5>;
-  }
+  // if (recipes !== null && recipes.length === 0 && !loading) {
+  //   return <h5>Qui vedrai le tue ricette! Prova ad aggiungerne una...</h5>;
+  // }
 
   // the recipes (all of them, or just those filtered by the search bar)
   // are split in groups, then a row is created for each group;
@@ -32,23 +37,11 @@ const Recipes = () => {
   // are displayed correctly in each screen size
   return (
     <Fragment>
-      {recipes !== null && !loading ? (
+      {recipes !== null && categories !== null && !loading ? (
         <Fragment>
-          {filtered !== null
-            ? splitArrayInGroups(filtered).map((group, index) => (
-                <div className='row' key={index}>
-                  {group.map((recipe) => (
-                    <RecipeItem recipe={recipe} key={recipe._id} />
-                  ))}
-                </div>
-              ))
-            : splitArrayInGroups(recipes).map((group, index) => (
-                <div className='row' key={index}>
-                  {group.map((recipe) => (
-                    <RecipeItem recipe={recipe} key={recipe._id} />
-                  ))}
-                </div>
-              ))}
+          {categories.map((category) => (
+            <RecipesByCategory category={category} key={category._id} />
+          ))}
         </Fragment>
       ) : (
         <Spinner />

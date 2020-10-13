@@ -10,7 +10,7 @@ const Category = require('../models/Category');
 // @access  Private
 router.get('/', auth, async (req, res) => {
   try {
-    const categories = await Category.find();
+    const categories = await Category.find().sort('position');
     res.json(categories);
   } catch (err) {
     console.error(err.message);

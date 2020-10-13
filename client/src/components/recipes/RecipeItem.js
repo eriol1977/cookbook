@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipeContext from '../../context/recipe/recipeContext';
 
-const RecipeItem = ({ recipe }) => {
+const RecipeItem = ({ recipe, color }) => {
   const recipeContext = useContext(RecipeContext);
   const { setCurrent } = recipeContext;
 
@@ -17,32 +17,22 @@ const RecipeItem = ({ recipe }) => {
   };
 
   return (
-    <div className='col s6 m3 l3'>
-      <div
-        className='card small'
-        onClick={viewRecipe}
-        style={{ cursor: 'pointer' }}
-      >
-        <div className='card-image'>
-          {recipe.mainImage ? (
-            <img src={recipe.mainImage} alt='Ricetta' />
-          ) : (
-            <img src='cookbook.gif' alt='Ricetta' />
-          )}
-        </div>
-
-        <div className='card-content center'>
-          <span>
-            <strong>{title}</strong>
-          </span>
-        </div>
-      </div>
-    </div>
+    <li
+      onClick={viewRecipe}
+      style={{
+        cursor: 'pointer',
+        backgroundColor: color,
+        padding: '5px 5px 5px 5px',
+      }}
+    >
+      {title}
+    </li>
   );
 };
 
 RecipeItem.propTypes = {
   recipe: PropTypes.object.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default RecipeItem;

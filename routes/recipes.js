@@ -29,9 +29,10 @@ router.post(
   [
     auth,
     [
-      body('title', 'Title is required').not().isEmpty(),
-      body('ingredients', 'Ingredients are required').not().isEmpty(),
-      body('preparation', 'Preparation is required').not().isEmpty(),
+      body('title', 'Il titolo è obbligatorio').not().isEmpty(),
+      body('category', 'La categoria è obbligatoria').not().isEmpty(),
+      body('ingredients', 'Gli ingredienti sono obbligatori').not().isEmpty(),
+      body('preparation', 'La preparazione è obbligatoria').not().isEmpty(),
     ],
   ],
   async (req, res) => {
