@@ -17,14 +17,18 @@ const RecipesByCategory = ({ category }) => {
         recipes !== null &&
         recipes.filter((r) => r.category === _id).length > 0 ? (
           <div className='card-panel' style={{ minHeight: '120px' }}>
-            <strong>{name}</strong>
-            <img
-              src={image}
-              alt='category'
-              title={name}
-              style={{ width: '80px' }}
-              className='right'
-            />
+            <table cellPadding='0' cellSpacing='0' style={{borderCollapse: 'unset'}}><tbody><tr>
+              <td style={{width: '1%'}}>
+                <img
+                  src={image}
+                  alt='category'
+                  title={name}
+                  style={{ width: '80px' }}
+                  className='right'
+                />
+              </td>
+              <td><h5>{name}</h5></td>
+            </tr></tbody></table>
             <ul>
               {filtered !== null
                 ? filtered
@@ -58,14 +62,18 @@ const RecipesByCategory = ({ category }) => {
         )
       ) : filtered.filter((r) => r.category === _id).length > 0 ? (
         <div className='card-panel' style={{ minHeight: '120px' }}>
-          <strong>{name}</strong>
-          <img
-            src={image}
-            alt='category'
-            title={name}
-            style={{ width: '80px' }}
-            className='right'
-          />
+          <table cellPadding='0' cellSpacing='0' style={{borderCollapse: 'unset'}}><tbody><tr>
+              <td style={{width: '1%'}}>
+                <img
+                  src={image}
+                  alt='category'
+                  title={name}
+                  style={{ width: '80px' }}
+                  className='right'
+                />
+              </td>
+              <td><h5>{name}</h5></td>
+          </tr></tbody></table>
           <ul>
             {filtered !== null
               ? filtered

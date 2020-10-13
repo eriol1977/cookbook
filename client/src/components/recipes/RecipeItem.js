@@ -22,7 +22,8 @@ const RecipeItem = ({ recipe, color }) => {
       style={{
         cursor: 'pointer',
         backgroundColor: color,
-        padding: '5px 5px 5px 5px',
+        padding: '5px 5px 5px 20px',
+        marginBottom: '5px'
       }}
     >
       {title}

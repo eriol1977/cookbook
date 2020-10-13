@@ -33,7 +33,7 @@ const RecipeView = () => {
     <Fragment>
       <NavbarView />
       <div className='container'>
-        <table cellSpacing='0' cellPadding='0' style={{borderCollapse: 'unset'}}><tr>
+        <table cellSpacing='0' cellPadding='0' style={{borderCollapse: 'unset'}}><tbody><tr>
         <td><h5>{title}</h5></td>
         <td>
         {recipeCategory && (
@@ -46,7 +46,7 @@ const RecipeView = () => {
             />
         )}
         </td>
-        </tr></table>
+        </tr></tbody></table>
 
         <strong>Ingredienti</strong>
         <div className='card-panel yellow lighten-4'>

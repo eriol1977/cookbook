@@ -44,6 +44,14 @@ const Navbar = () => {
     }    
   }
 
+  const closeCategoryBar = () => {
+    setCategBarVisible(false);
+  }
+
+  const closeSearchBar = () => {
+    setSearchBarVisible(false);
+  }
+
   return (
     <Fragment>
       <nav className='blue' style={{ marginBottom: '20px' }}>
@@ -105,8 +113,8 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      {searchBarVisible && <SearchBar />}
-      {categBarVisible && <CategoryBar />}
+      {searchBarVisible && <SearchBar onClose={closeSearchBar}/>}
+      {categBarVisible && <CategoryBar onClose={closeCategoryBar}/>}
 
       <Sidenav />
     </Fragment>

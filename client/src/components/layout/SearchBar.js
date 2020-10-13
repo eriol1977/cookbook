@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types'
 import RecipeContext from '../../context/recipe/recipeContext';
 
-const SearchBar = () => {
+const SearchBar = ({onClose}) => {
   const recipeContext = useContext(RecipeContext);
   const { searchRecipes, clearSearch } = recipeContext;
 
@@ -31,9 +32,9 @@ const SearchBar = () => {
     <div className='container'>
       <div className='card-panel yellow lighten-4'>
         <div className='row'>
-          <div className='col s4 m4 l4'>
+          <div className='col s3 m3 l3'>
             <div className='switch center'>
-              <span style={{ fontSize: '0.9em' }}>Titolo</span>
+              <span style={{ fontSize: '0.9em' }}>Titolo</span><br/>
               <label>
                 <input
                   id='byTitle'
@@ -45,9 +46,9 @@ const SearchBar = () => {
               </label>
             </div>
           </div>
-          <div className='col s4 m4 l4'>
+          <div className='col s3 m3 l3'>
             <div className='switch center'>
-              <span style={{ fontSize: '0.9em' }}>Ingredienti</span>
+              <span style={{ fontSize: '0.9em' }}>Ingredienti</span><br/>
               <label>
                 <input
                   id='byIngredients'
@@ -59,9 +60,9 @@ const SearchBar = () => {
               </label>
             </div>
           </div>
-          <div className='col s4 m4 l4'>
+          <div className='col s3 m3 l3'>
             <div className='switch center'>
-              <span style={{ fontSize: '0.9em' }}>Preparazione</span>
+              <span style={{ fontSize: '0.9em' }}>Preparazione</span><br/>
               <label>
                 <input
                   id='byPreparation'
@@ -72,6 +73,15 @@ const SearchBar = () => {
                 <span className='lever'></span>
               </label>
             </div>
+          </div>
+          <div className='col s3 m3 l3'>
+          <a
+            className='right'
+            href='#!'
+            onClick={onClose}
+            title='Chiudi filtro'>
+              <i className="material-icons left">close</i>
+          </a>
           </div>
         </div>
         <input
@@ -88,12 +98,16 @@ const SearchBar = () => {
             href='#!'
             onClick={onClear}
             title='Resetta filtri'>
-              <i className="material-icons left">close</i>Resetta Filtro
+              <i className="material-icons left">refresh</i>Resetta Filtro
           </a>
         </div>
       </div>
     </div>
   );
 };
+
+SearchBar.propTypes = {
+  onClose: PropTypes.func.isRequired,
+}
 
 export default SearchBar;
