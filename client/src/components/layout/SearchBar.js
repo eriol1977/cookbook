@@ -4,7 +4,7 @@ import RecipeContext from '../../context/recipe/recipeContext';
 
 const SearchBar = ({onClose}) => {
   const recipeContext = useContext(RecipeContext);
-  const { searchRecipes, clearSearch } = recipeContext;
+  const { searchRecipes, clearSearch, filters } = recipeContext;
 
   const [text, setText] = useState('');
   const [byTitle, setByTitle] = useState(true);
@@ -12,7 +12,13 @@ const SearchBar = ({onClose}) => {
   const [byPreparation, setByPreparation] = useState(false);
 
   useEffect(() => {
-    searchRecipes(text, byTitle, byIngredients, byPreparation);
+    searchRecipes({
+      ...filters,
+      text: text, 
+      byTitle: byTitle, 
+      byIngredients: byIngredients, 
+      byPreparation: byPreparation
+    });
     //eslint-disable-next-line
   }, [text, byTitle, byIngredients, byPreparation]);
 

@@ -9,7 +9,7 @@ const RecipeItem = ({ recipe, color }) => {
 
   const history = useHistory();
 
-  const { title } = recipe;
+  const { title, bookmarked } = recipe;
 
   const viewRecipe = () => {
     setCurrent(recipe);
@@ -27,6 +27,10 @@ const RecipeItem = ({ recipe, color }) => {
       }}
     >
       {title}
+      {
+        bookmarked && (
+          <i className='material-icons right'>bookmark</i>
+        )}
     </li>
   );
 };

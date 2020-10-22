@@ -20,6 +20,9 @@ const RecipeSchema = mongoose.Schema({
   mainImage: {
     type: String,
   },
+  bookmarked: {
+    type: Boolean,
+  },
   category: {
     type: mongoose.Schema.Types.ObjectId, // MongoDB id type
     ref: 'categories', // collection we are referring to

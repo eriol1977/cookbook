@@ -5,13 +5,17 @@ import CategoryGrid from '../categories/CategoryGrid';
 
 const CategoryBar = ({onClose}) => {
   const recipeContext = useContext(RecipeContext);
-  const { searchRecipesByCategory, clearSearch } = recipeContext;
+  const { searchRecipes, clearSearch, filters } = recipeContext;
 
   const [category, setCategory] = useState(null);
 
   useEffect(() => {
-    if(category !== null)
-      searchRecipesByCategory(category._id);
+    if(category !== null) {
+      searchRecipes({
+        ...filters,
+        category: category._id
+      });
+    }
     //eslint-disable-next-line
   }, [category]);
 

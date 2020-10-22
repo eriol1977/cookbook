@@ -9,7 +9,6 @@ import {
   SET_LOADING,
   GET_RECIPES,
   SEARCH_RECIPES,
-  SEARCH_RECIPES_BY_CATEGORY,
   CLEAR_SEARCH,
   CLEAR_RECIPES,
   CLEAR_CURRENT,
@@ -25,6 +24,14 @@ const RecipeState = (props) => {
     current: null,
     loading: false,
     error: null,
+    filters: {
+      text: null,
+      title: true,
+      ingredients: false,
+      preparation: false,
+      category: null,
+      bookmarked: false
+    }
   };
 
   const [state, dispatch] = useReducer(recipeReducer, initialState);
@@ -85,18 +92,10 @@ const RecipeState = (props) => {
   };
 
   // Search Recipes
-  const searchRecipes = (text, byTitle, byIngredients, byPreparation) => {
+  const searchRecipes = (filters) => {
     dispatch({
       type: SEARCH_RECIPES,
-      payload: { text, byTitle, byIngredients, byPreparation },
-    });
-  };
-
-  // Search Recipes by Category
-  const searchRecipesByCategory = (id) => {
-    dispatch({
-      type: SEARCH_RECIPES_BY_CATEGORY,
-      payload: id,
+      payload: filters,
     });
   };
 
@@ -133,12 +132,12 @@ const RecipeState = (props) => {
         current: state.current,
         loading: state.loading,
         error: state.error,
+        filters: state.filters,
         getRecipes,
         addRecipe,
         updateRecipe,
         deleteRecipe,
         searchRecipes,
-        searchRecipesByCategory,
         clearSearch,
         setLoading,
         clearRecipes,

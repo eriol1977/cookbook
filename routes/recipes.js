@@ -42,7 +42,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { title, ingredients, preparation, mainImage, category } = req.body;
+    const { title, ingredients, preparation, mainImage, bookmarked, category } = req.body;
 
     try {
       const newRecipe = new Recipe({
@@ -51,6 +51,7 @@ router.post(
         preparation,
         user: req.user.id,
         mainImage,
+        bookmarked,
         category: category,
       });
 
@@ -67,7 +68,7 @@ router.post(
 // @desc    Update recipe
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-  const { title, ingredients, preparation, mainImage, category } = req.body;
+  const { title, ingredients, preparation, mainImage, bookmarked, category } = req.body;
 
   // build recipe object
   const recipeFields = {};
@@ -75,6 +76,7 @@ router.put('/:id', auth, async (req, res) => {
   if (ingredients) recipeFields.ingredients = ingredients;
   if (preparation) recipeFields.preparation = preparation;
   if (mainImage) recipeFields.mainImage = mainImage;
+  if (bookmarked !== null) recipeFields.bookmarked = bookmarked;
   if (category) recipeFields.category = category;
 
   try {

@@ -8,7 +8,7 @@ import CategoryBar from './CategoryBar';
 
 const Navbar = () => {
   const recipeContext = useContext(RecipeContext);
-  const { clearCurrent } = recipeContext;
+  const { clearCurrent, searchRecipes, filters, clearSearch } = recipeContext;
 
   const history = useHistory();
 
@@ -20,6 +20,20 @@ const Navbar = () => {
 
   const [searchBarVisible, setSearchBarVisible] = useState(false);
   const [categBarVisible, setCategBarVisible] = useState(false);
+  const [bookmarksVisible, setBookmarksVisible] = useState(false);
+
+  useEffect(() => {
+    searchRecipes({
+      ...filters,
+      bookmarked: bookmarksVisible,
+    });
+    //eslint-disable-next-line
+  }, [bookmarksVisible]);
+
+  useEffect(() => {
+    setBookmarksVisible(filters.bookmarked);
+    //eslint-disable-next-line
+  }, [filters]);
 
   const onAddRecipe = (e) => {
     clearCurrent();
@@ -27,30 +41,38 @@ const Navbar = () => {
   };
 
   const onSearchButtonClicked = () => {
-    if(searchBarVisible) {
+    if (searchBarVisible) {
       setSearchBarVisible(false);
-    }else{
+    } else {
       setSearchBarVisible(true);
       setCategBarVisible(false);
-    }    
-  }
+    }
+  };
 
   const onCategButtonClicked = () => {
-    if(categBarVisible) {
+    if (categBarVisible) {
       setCategBarVisible(false);
-    }else{
+    } else {
       setCategBarVisible(true);
       setSearchBarVisible(false);
-    }    
-  }
+    }
+  };
+
+  const onBookmarkButtonClicked = () => {
+    if (bookmarksVisible) {
+      setBookmarksVisible(false);
+    } else {
+      setBookmarksVisible(true);
+    }
+  };
 
   const closeCategoryBar = () => {
     setCategBarVisible(false);
-  }
+  };
 
   const closeSearchBar = () => {
     setSearchBarVisible(false);
-  }
+  };
 
   return (
     <Fragment>
@@ -69,12 +91,24 @@ const Navbar = () => {
           </ul>
           <ul id='nav-mobile' className='right'>
             <li>
+              <a href='#!' onClick={onAddRecipe} title='Aggiungi ricetta'>
+                <i className='material-icons'>add</i>
+              </a>
+            </li>
+            <li>
               <a
                 href='#!'
-                onClick={onAddRecipe}
-                title='Aggiungi ricetta'
+                onClick={onBookmarkButtonClicked}
+                title='Mostra preferiti'
               >
-                <i className='material-icons'>add</i>
+                <i
+                  className='material-icons'
+                  style={{
+                    color: filters.bookmarked ? '#ffff00' : 'white',
+                  }}
+                >
+                  bookmark
+                </i>
               </a>
             </li>
             <li>
@@ -102,7 +136,6 @@ const Navbar = () => {
                 <i
                   className='material-icons'
                   style={{
-                    marginRight: '20px',
                     color: searchBarVisible ? '#ffff00' : 'white',
                   }}
                 >
@@ -110,11 +143,16 @@ const Navbar = () => {
                 </i>
               </a>
             </li>
+            <li>
+              <a href='#!' onClick={clearSearch} title='Resetta Filtri'>
+                <i className='material-icons'>cancel</i>
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
-      {searchBarVisible && <SearchBar onClose={closeSearchBar}/>}
-      {categBarVisible && <CategoryBar onClose={closeCategoryBar}/>}
+      {searchBarVisible && <SearchBar onClose={closeSearchBar} />}
+      {categBarVisible && <CategoryBar onClose={closeCategoryBar} />}
 
       <Sidenav />
     </Fragment>

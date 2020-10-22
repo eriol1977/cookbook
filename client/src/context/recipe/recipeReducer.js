@@ -4,7 +4,6 @@ import {
   SET_LOADING,
   GET_RECIPES,
   SEARCH_RECIPES,
-  SEARCH_RECIPES_BY_CATEGORY,
   CLEAR_SEARCH,
   CLEAR_RECIPES,
   CLEAR_CURRENT,
@@ -12,6 +11,30 @@ import {
   UPDATE_RECIPE,
   DELETE_RECIPE,
 } from '../types';
+
+const filterRecipes = (recipes, filters) => {
+  if (recipes) {
+    let temp = [...recipes];
+    if (filters.category !== null) {
+      temp = recipes.filter((recipe) => recipe.category === filters.category);
+    }
+    if (filters.bookmarked) {
+      temp = temp.filter((recipe) => recipe.bookmarked === true);
+    }
+    if (filters.text !== null) {
+      temp = temp.filter((recipe) => {
+        const regex = new RegExp(`${filters.text}`, 'gi'); // search for the text, global, case insensitive
+        return (
+          (filters.byTitle && recipe.title.match(regex)) ||
+          (filters.byIngredients && recipe.ingredients.match(regex)) ||
+          (filters.byPreparation && recipe.preparation.match(regex))
+        );
+      });
+    }
+    return temp;
+  }
+  return null;
+};
 
 export default (state, action) => {
   switch (action.type) {
@@ -33,7 +56,6 @@ export default (state, action) => {
         recipes: state.recipes.map((recipe) =>
           recipe._id === action.payload._id ? action.payload : recipe
         ), // the list is mapped to another list which has the updated element instead of the old (when the id is the same), or the element itself in case of different id
-        current: null,
       };
     case DELETE_RECIPE:
       return {
@@ -47,19 +69,8 @@ export default (state, action) => {
     case SEARCH_RECIPES:
       return {
         ...state,
-        filtered: state.recipes.filter((recipe) => {
-          const regex = new RegExp(`${action.payload.text}`, 'gi'); // search for the text, global, case insensitive
-          return (
-            (action.payload.byTitle && recipe.title.match(regex)) ||
-            (action.payload.byIngredients && recipe.ingredients.match(regex)) ||
-            (action.payload.byPreparation && recipe.preparation.match(regex))
-          );
-        }),
-      };
-    case SEARCH_RECIPES_BY_CATEGORY:
-      return {
-        ...state,
-        filtered: state.recipes.filter((recipe) => recipe.category === action.payload),
+        filters: action.payload,
+        filtered: filterRecipes(state.recipes, action.payload),
       };
     case SET_CURRENT:
       return {
@@ -74,6 +85,14 @@ export default (state, action) => {
     case CLEAR_SEARCH:
       return {
         ...state,
+        filters: {
+          text: null,
+          title: true,
+          ingredients: false,
+          preparation: false,
+          category: null,
+          bookmarked: false,
+        },
         filtered: null,
       };
     case RECIPES_ERROR:
